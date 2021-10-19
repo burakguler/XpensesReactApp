@@ -1,4 +1,5 @@
 ![image info](./xpensesImage.png)
+Image design by jcomp
 ---
 # **Xpenses React App**
 
