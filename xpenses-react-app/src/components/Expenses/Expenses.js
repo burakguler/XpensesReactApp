@@ -1,30 +1,28 @@
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "./Expenses.css";
+import {data} from "../../data/xpensesdata"
 
-const Expenses = (props) => {
+const Expenses = () => {
+  const changeData=(item)=>{
+  let oldObj= data.find(d=>d.id===item.id);
+  oldObj.title="burak";
+  
+  }
+ 
   return (
     <Card className="expenses">
-      <ExpenseItem
-        title={props.items[0].title}
-        amount={props.items[0].amount}
-        date={props.items[0].date}
-      />
-      <ExpenseItem
-        title={props.items[1].title}
-        amount={props.items[1].amount}
-        date={props.items[1].date}
-      />
-      <ExpenseItem
-        title={props.items[2].title}
-        amount={props.items[2].amount}
-        date={props.items[2].date}
-      />
-      <ExpenseItem
-        title={props.items[3].title}
-        amount={props.items[3].amount}
-        date={props.items[3].date}
-      />
+      {data.map((item,key) => {
+        return (
+          <ExpenseItem key={key}
+          id={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
+            change={p=>changeData(p)}
+          />
+        );
+      })}
     </Card>
   );
 };

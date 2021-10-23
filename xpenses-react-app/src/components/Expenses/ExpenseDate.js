@@ -1,15 +1,18 @@
 import "./ExpenseDate.css";
+import { useEffect, useState } from "react";
 
 const ExpenseDate = (props) => {
-  const month = props.date.toLocaleString("tr-TR", { month: "long" });
-  const day = props.date.toLocaleString("tr-TR", { day: "2-digit" });
-  const year = props.date.getFullYear();
+  const [stateDate, setDateState] = useState({});
+
+  useEffect(() => {
+    setDateState({
+      date: props.date.toLocaleString("tr-TR", { month: "long" }),
+    });
+  }, []);
 
   return (
     <div className="expense-date">
-      <div className="expense-date_month">{month}</div>
-      <div className="expense-date__day">{day}</div>
-      <div className="expense-date__year">{year}</div>
+      <div className="expense-date_month">{stateDate.date}</div>
     </div>
   );
 };
